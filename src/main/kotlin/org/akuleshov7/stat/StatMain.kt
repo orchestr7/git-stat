@@ -46,6 +46,12 @@ fun main(args: Array<String>) =
             description = "Debug mode to see additional information about the program execution"
         ).default(false)
 
+        val organizations by parser.option(
+            ArgType.String,
+            shortName = "o",
+            description = "List of organizations, separated by comma, like: \"cqfn, artipie\", e.t.c"
+        )
+
         parser.parse(args)
         isDebug = debug
 
