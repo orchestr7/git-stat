@@ -13,10 +13,11 @@ class StargazersCalculator(private val repos: String?, private val extended: Boo
 
     suspend fun calculateStargazers(): StargazersCalculator{
         // creating correct urls from the list of repos
-        val repositoriesList: List<String>? = (readConfig() ?: repos)
+        val repositoriesList: Set<String>? = (readConfig() ?: repos)
             ?.split(',')
             ?.map { it.trim() }
             ?.map { it.stargazersEndPoint() }
+            ?.toSet()
 
         // preparing correct urls to github from the list of repos
         if (repositoriesList != null) {
@@ -48,8 +49,8 @@ class StargazersCalculator(private val repos: String?, private val extended: Boo
             logInfo("Unique stargazers: ${uniqueStargazers.joinToString()}")
             logInfo("Duplicated stars: ${
                 duplicatedStargazers
-                    .map { "User:${it.key.login} Stars:$it.value" }
-                    .joinToString(";")
+                    .map { "User:${it.key.login} Stars:${it.value}" }
+                    .joinToString("; ")
             }"
             )
         }

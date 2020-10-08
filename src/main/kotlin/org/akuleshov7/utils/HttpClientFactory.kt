@@ -12,7 +12,7 @@ import java.net.SocketException
 import java.net.UnknownHostException
 
 
-class HttpClientFactory(val urls: List<String>) {
+class HttpClientFactory(val urls: Set<String>) {
     companion object {
         // FixMe: move it to properties/arguments
         const val REQUEST_TIMEOUT = 10000L
