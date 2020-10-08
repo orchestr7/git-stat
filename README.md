@@ -1,6 +1,7 @@
 [![License](https://img.shields.io/github/license/akuleshov7/git-stat)](https://github.com/git-stat/blob/master/LICENSE)
 [![Hits-of-Code](https://hitsofcode.com/github/akuleshov7/git-stat?branch=main)](https://hitsofcode.com/view/github/akuleshov7/git-stat?branch=main)
 
+
 GitHub - is an outstanding platform that provides all kinds of insights about the project.
 But sometimes you need to get extra statistics that cannot be found on github directly.
 [GitHub API](https://developer.github.com/v3/) provides all needed information to get and calculate all needed statistics.
