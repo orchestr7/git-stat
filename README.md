@@ -9,8 +9,8 @@ This command-line application will do exactly this thing.
 
 ## Run as CLI-application
 - Download and extract `git-stat-0.1.0.zip/git-stat-0.1.0.tar`
-- Windows: run `git-stat.bat` from `bin/` directory
-  Linux: execute `git-stat` from `bin/` directory
+- **Windows**: run `git-stat.bat` from `bin/` directory; 
+  **Linux**: execute `git-stat` from `bin/` directory
 
 `git-stat` is a command line application powered by java. You will need to install java to run it.
 FixMe: One day when `kotlin` will be mature enough and git-stat will automatically become a native application.
@@ -23,7 +23,7 @@ To run .jar file directly do (see the list of options here: [cli-arguments](#arg
 - Build tar: `$ gradlew distTar`
 
 ## Example of usage for calculating unique stargazers 
-`java -jar git-stat -t stargazers -r "akuleshov7/diktat-demo, cqfn/diktat, yegor256/tacit" -e`
+`git-stat -t stargazers -r "akuleshov7/diktat-demo, cqfn/diktat, yegor256/tacit" -e`
 
 1) `-t stargazers -r cqfn/veniq,cqfn/aibolit -e`
 2) `-t stargazers -o artipie -e`
@@ -56,7 +56,7 @@ In this set of repositories 4 stars are duplications and 1362 unique stargazers
 ## Errors and resolution
 Please note that it is possible to run `git-stat` application in `--debug` mode. Some of problems can be understood by debug information.
 But below are most frequent issues: 
-- `403 rate limit exceeded`: github has strict limitations on the number of requests to it's API. We are able to run only 60 requests!
+- `403 rate limit exceeded`: github has strict limitations on the number of requests to it's API. We are able to run **only 60 requests**!
 - `ClientRequestException`: there is some kind of misprint in the name of the repository or the URL is broken
 - `TimeoutCancellationException`: current timeout is 10000 ms on each request
 - `SocketException`: usually the problem appears with the proxy enabled
