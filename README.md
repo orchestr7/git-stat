@@ -8,13 +8,19 @@ But sometimes you need to get extra statistics that cannot be found on github di
 This command-line application will do exactly this thing.
 
 ## Run as CLI-application
+- Download and extract `git-stat-0.1.0.zip/git-stat-0.1.0.tar`
+- Windows: run `git-stat.bat` from `bin/` directory
+  Linux: execute `git-stat` from `bin/` directory
+
 `git-stat` is a command line application powered by java. You will need to install java to run it.
 FixMe: One day when `kotlin` will be mature enough and git-stat will automatically become a native application.
 
 To run .jar file directly do (see the list of options here: [cli-arguments](#arguments)):
-`java -jar git-stat --options`
+`$ git-stat --options`
 
-FixMe: this application will be distributed with a `git-stat` run script for WIN/MAC/UNIX
+## Build executable application 
+- Build zip: `$ gradlew distZip`
+- Build tar: `$ gradlew distTar`
 
 ## Example of usage for calculating unique stargazers 
 `java -jar git-stat -t stargazers -r "akuleshov7/diktat-demo, cqfn/diktat, yegor256/tacit" -e`
