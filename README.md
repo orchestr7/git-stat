@@ -19,6 +19,10 @@ FixMe: this application will be distributed with a `git-stat` run script for WIN
 ## Example of usage for calculating unique stargazers 
 `java -jar git-stat -t stargazers -r "akuleshov7/diktat-demo, cqfn/diktat, yegor256/tacit" -e`
 
+1) `-t stargazers -r cqfn/veniq,cqfn/aibolit -e`
+2) `-t stargazers -o artipie -e`
+3) `-t stargazers -r cqfn/diktat,akuleshov7/huawei-yapf -e`
+
 This will output the following with `--extended` option ([cli-arguments](#arguments)):
 ```bash
 [INFO] getting statistics for the following repositories: akuleshov7/diktat-demo, cqfn/diktat, yegor256/tacit
@@ -46,7 +50,7 @@ In this set of repositories 4 stars are duplications and 1362 unique stargazers
 ## Errors and resolution
 Please note that it is possible to run `git-stat` application in `--debug` mode. Some of problems can be understood by debug information.
 But below are most frequent issues: 
-- `403 rate limit exceeded`: github has strict limitations on the number of requests to it's API
+- `403 rate limit exceeded`: github has strict limitations on the number of requests to it's API. We are able to run only 60 requests!
 - `ClientRequestException`: there is some kind of misprint in the name of the repository or the URL is broken
 - `TimeoutCancellationException`: current timeout is 10000 ms on each request
 - `SocketException`: usually the problem appears with the proxy enabled

@@ -57,8 +57,9 @@ fun main(args: Array<String>) =
 
         when (type) {
             STARGAZERS -> {
+                val repositories = Repositories(repos, organizations, configPath).requestAllRepos()
                 logInfo("getting statistics for the following repositories: $repos")
-                StargazersCalculator(repos, extended, configPath)
+                StargazersCalculator(repositories, extended, configPath)
                     .calculateStargazers()
                     .log()
             }

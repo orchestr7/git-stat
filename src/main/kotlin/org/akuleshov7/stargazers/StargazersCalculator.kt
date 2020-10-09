@@ -2,25 +2,24 @@ package org.akuleshov7.stargazers
 
 import org.akuleshov7.api.StargazersJson
 import org.akuleshov7.api.stargazersEndPoint
+import org.akuleshov7.stat.Repositories
 import org.akuleshov7.utils.HttpClientFactory
 import org.akuleshov7.utils.logAndExit
 import org.akuleshov7.utils.logInfo
 
-class StargazersCalculator(private val repos: String?, private val extended: Boolean, val configPath: String?) {
+class StargazersCalculator(private val repositories: Set<String>, private val extended: Boolean, val configPath: String?) {
     lateinit var uniqueStargazers: List<String>
     lateinit var duplicatedStargazers: Map<StargazersJson, Int>
     var numberOfDuplicatedStars: Int = 0
 
     suspend fun calculateStargazers(): StargazersCalculator{
         // creating correct urls from the list of repos
-        val repositoriesList: Set<String>? = (readConfig() ?: repos)
-            ?.split(',')
-            ?.map { it.trim() }
-            ?.map { it.stargazersEndPoint() }
-            ?.toSet()
+        val repositoriesList: Set<String> = repositories
+            .map { it.stargazersEndPoint() }
+            .toSet()
 
         // preparing correct urls to github from the list of repos
-        if (repositoriesList != null) {
+        if (repositoriesList.isNotEmpty()) {
             val allStargazers = HttpClientFactory(repositoriesList)
                 .requestAllData<Array<StargazersJson>>()
                 // flatten list<array> with stargazers
@@ -35,7 +34,7 @@ class StargazersCalculator(private val repos: String?, private val extended: Boo
             doCalculations(allStargazers)
 
         } else {
-            "List of repositories was not provided. It can be provided in the configuration file or with a '-r' option" logAndExit 8
+            "List of repositories was not provided. It can be provided with a '-r' or '-o' option" logAndExit 8
         }
 
         return this
@@ -61,11 +60,5 @@ class StargazersCalculator(private val repos: String?, private val extended: Boo
         uniqueStargazers = groupedStargazers.keys.map { it.login }
         duplicatedStargazers = groupedStargazers.filter { it.value > 1 }
         numberOfDuplicatedStars = duplicatedStargazers.values.map { it - 1 }.sum()
-    }
-
-
-    private fun readConfig(): String? {
-        // FixMe: implement and move out of this class
-        return null
     }
 }
