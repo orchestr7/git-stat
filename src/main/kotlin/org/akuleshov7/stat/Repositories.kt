@@ -34,10 +34,10 @@ class Repositories() {
     }
 
     private fun String?.splitAndTrim() =
-            this
-                    ?.split(',')
-                    ?.map { it.trim() }
-                    ?.toSet()
+        this
+                ?.split(',')
+                ?.map { it.trim() }
+                ?.toSet()
 
     private fun readReposFromConfig(): String? {
         // FixMe: implement and move out of this class
