@@ -1,3 +1,7 @@
+/**
+ * Utilities to interact with Github API
+ */
+
 package org.akuleshov7.api
 
 // FixMe: move to configuration file

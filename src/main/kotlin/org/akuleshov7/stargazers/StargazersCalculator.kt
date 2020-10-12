@@ -8,31 +8,30 @@ import org.akuleshov7.utils.logAndExit
 import org.akuleshov7.utils.logInfo
 
 class StargazersCalculator(private val repositories: Set<String>, private val extended: Boolean, val configPath: String?) {
+    var numberOfDuplicatedStars: Int = 0
     lateinit var uniqueStargazers: List<String>
     lateinit var duplicatedStargazers: Map<StargazersJson, Int>
-    var numberOfDuplicatedStars: Int = 0
 
-    suspend fun calculateStargazers(): StargazersCalculator{
+    suspend fun calculateStargazers(): StargazersCalculator {
         // creating correct urls from the list of repos
         val repositoriesList: Set<String> = repositories
-            .map { it.stargazersEndPoint() }
-            .toSet()
+                .map { it.stargazersEndPoint() }
+                .toSet()
 
         // preparing correct urls to github from the list of repos
         if (repositoriesList.isNotEmpty()) {
             val allStargazers = HttpClientFactory(repositoriesList)
-                .requestAllData<Array<StargazersJson>>()
-                // flatten list<array> with stargazers
-                .flatMap { array ->
-                    mutableListOf<StargazersJson>()
-                        .also {
-                            it.addAll(array)
-                        }
-                }
+                    .requestAllData<Array<StargazersJson>>()
+                    // flatten list<array> with stargazers
+                    .flatMap { array ->
+                        mutableListOf<StargazersJson>()
+                                .also {
+                                    it.addAll(array)
+                                }
+                    }
 
             // calculate number of stars and stargazers
             doCalculations(allStargazers)
-
         } else {
             "List of repositories was not provided. It can be provided with a '-r' or '-o' option" logAndExit 8
         }
@@ -48,9 +47,9 @@ class StargazersCalculator(private val repositories: Set<String>, private val ex
             logInfo("Unique stargazers: ${uniqueStargazers.joinToString()}")
             logInfo("Duplicated stars: ${
                 duplicatedStargazers
-                    .map { "User:${it.key.login} Stars:${it.value}" }
-                    .joinToString("; ")
-            }"
+                        .map { "User:${it.key.login} Stars:${it.value}" }
+                        .joinToString("; ")
+                }"
             )
         }
     }
