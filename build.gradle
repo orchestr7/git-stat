@@ -60,3 +60,27 @@ test {
 application {
     mainClass = 'org.akuleshov7.stat.StatMainKt'
 }
+
+// code style
+configurations {
+    ktlint {
+        // temporary enable maven local to run diktat snapshot
+        repositories {
+            mavenLocal()
+            mavenCentral()
+        }
+    }
+}
+dependencies {
+    ktlint ("com.pinterest:ktlint:0.37.1") {
+        exclude group: "com.pinterest.ktlint", module: "ktlint-ruleset-standard"
+    }
+    ktlint "org.cqfn.diktat:diktat-rules:0.1.2-SNAPSHOT"
+}
+task diktat(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    main = "com.pinterest.ktlint.Main"
+    classpath = configurations.ktlint
+    args "--debug"
+    args "src/**/*.kt"
+}

@@ -1,3 +1,7 @@
+/**
+ * Utilities to interact with Github API
+ */
+
 package org.akuleshov7.api
 
 // FixMe: move to configuration file
@@ -9,11 +13,11 @@ const val PAGINATION_SIZE = 100
  * pagination
  */
 fun String.stargazersEndPoint() =
-    "https://api.github.com/repos/$this/stargazers?per_page=$PAGINATION_SIZE"
+        "https://api.github.com/repos/$this/stargazers?per_page=$PAGINATION_SIZE"
 
 /**
  * this github API provides information about the repositories in the organization and user account
  * pagination
  */
 fun String.reposEndPoint() =
-    "https://api.github.com/users/$this/repos?per_page=$PAGINATION_SIZE"
+        "https://api.github.com/users/$this/repos?per_page=$PAGINATION_SIZE"

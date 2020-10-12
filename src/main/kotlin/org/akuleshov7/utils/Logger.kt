@@ -1,12 +1,15 @@
+/**
+ * Logging utilities
+ */
+
 package org.akuleshov7.utils
 
-import org.akuleshov7.stat.isDebug
 import kotlin.system.exitProcess
+import org.akuleshov7.stat.isDebug
 
 /**
  * Yes, it is yet another logger, because the quality and functionality of the current loggers is extremely poor
  */
-
 fun logError(msg: String) {
     System.err.println("[ERROR] $msg (you can enable debug mode by --debug/-d option)")
 }
