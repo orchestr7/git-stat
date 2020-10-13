@@ -64,7 +64,7 @@ dependencies {
     ktlint("com.pinterest:ktlint:0.37.1") {
         exclude("com.pinterest.ktlint", "ktlint-ruleset-standard")
     }
-    ktlint("org.cqfn.diktat:diktat-rules:0.1.2-SNAPSHOT")
+    ktlint("org.cqfn.diktat:diktat-rules:0.1.2")
 }
 task<JavaExec>("diktat") {
     setGroup("verification")
