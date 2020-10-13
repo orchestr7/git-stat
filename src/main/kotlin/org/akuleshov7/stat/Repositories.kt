@@ -30,7 +30,7 @@ class Repositories() {
             emptySet()
         }
 
-        return reposFromOrganizations.map { it.full_name }.toSet() + repos
+        return reposFromOrganizations.map { it.fullName }.toSet() + repos
     }
 
     private fun String?.splitAndTrim() =

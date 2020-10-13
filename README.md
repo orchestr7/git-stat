@@ -1,3 +1,4 @@
+[![Run diKTat code style analysis](https://github.com/akuleshov7/git-stat/workflows/Run%20diKTat%20code%20style%20analysis/badge.svg)](https://github.com/cqfn/diktat)
 [![License](https://img.shields.io/github/license/akuleshov7/git-stat)](https://github.com/git-stat/blob/master/LICENSE)
 [![Hits-of-Code](https://hitsofcode.com/github/akuleshov7/git-stat?branch=main)](https://hitsofcode.com/view/github/akuleshov7/git-stat?branch=main)
 
