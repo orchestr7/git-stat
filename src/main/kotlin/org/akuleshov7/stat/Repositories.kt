@@ -8,7 +8,9 @@ class Repositories() {
     var repos: Set<String> = emptySet()
     var orgs: Set<String> = emptySet()
 
-    constructor(repositories: String?, organizations: String?, configPath: String?) : this() {
+    constructor(repositories: String?,
+                organizations: String?,
+                configPath: String?) : this() {
         repos = (readReposFromConfig() ?: repositories).splitAndTrim() ?: emptySet()
         orgs = (readOrgsFromConfig() ?: organizations).splitAndTrim() ?: emptySet()
     }
