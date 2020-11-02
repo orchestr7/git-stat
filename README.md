@@ -29,6 +29,7 @@ To run .jar file directly do (see the list of options here: [cli-arguments](#arg
 1) `-t stargazers -r cqfn/veniq,cqfn/aibolit -e`
 2) `-t stargazers -o artipie -e`
 3) `-t stargazers -r cqfn/diktat,akuleshov7/huawei-yapf -e`
+4) `-t stargazers -r cqfn/degitx,cqfn/degitx-simulator,cqfn/degit`
 
 This will output the following with `--extended` option ([cli-arguments](#arguments)):
 ```bash
