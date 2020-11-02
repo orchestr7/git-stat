@@ -53,22 +53,16 @@ application {
 }
 
 // code style
-val ktlint by configurations.creating {
-    // temporary enable maven local to run diktat snapshot
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-}
-dependencies {
-    ktlint("com.pinterest:ktlint:0.39.0") {
-        exclude("com.pinterest.ktlint", "ktlint-ruleset-standard")
-    }
-    ktlint("org.cqfn.diktat:diktat-rules:0.1.3")
-}
+val ktlint by configurations.creating
 task<JavaExec>("diktat") {
     setGroup("verification")
     setDescription("Check Kotlin code style.")
+    dependencies {
+        ktlint("com.pinterest:ktlint:0.39.0") {
+            exclude("com.pinterest.ktlint", "ktlint-ruleset-standard")
+        }
+        ktlint("org.cqfn.diktat:diktat-rules:0.1.3")
+    }
     mainClass.set("com.pinterest.ktlint.Main")
     classpath = ktlint
     args("src/**/*.kt")
