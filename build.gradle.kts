@@ -4,7 +4,7 @@ group = "org.akuleshov7"
 version = "0.1.0"
 
 val kotlinVersion = "1.4.10"
-val ktorVersion = "1.4.0"
+val ktorVersion = "1.4.1"
 
 repositories {
     mavenCentral()
@@ -31,7 +31,7 @@ compileTestKotlin.run {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-apache:$ktorVersion")
@@ -53,23 +53,17 @@ application {
 }
 
 // code style
-val ktlint by configurations.creating {
-    // temporary enable maven local to run diktat snapshot
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-}
-dependencies {
-    ktlint("com.pinterest:ktlint:0.37.1") {
-        exclude("com.pinterest.ktlint", "ktlint-ruleset-standard")
-    }
-    ktlint("org.cqfn.diktat:diktat-rules:0.1.2")
-}
+val ktlint by configurations.creating
 task<JavaExec>("diktat") {
     setGroup("verification")
     setDescription("Check Kotlin code style.")
+    dependencies {
+        ktlint("com.pinterest:ktlint:0.39.0") {
+            exclude("com.pinterest.ktlint", "ktlint-ruleset-standard")
+        }
+        ktlint("org.cqfn.diktat:diktat-rules:0.1.3")
+    }
     mainClass.set("com.pinterest.ktlint.Main")
     classpath = ktlint
-    args("--debug", "src/**/*.kt")
+    args("src/**/*.kt")
 }

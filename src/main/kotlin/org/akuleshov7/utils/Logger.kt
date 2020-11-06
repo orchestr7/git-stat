@@ -4,8 +4,9 @@
 
 package org.akuleshov7.utils
 
-import kotlin.system.exitProcess
 import org.akuleshov7.stat.isDebug
+
+import kotlin.system.exitProcess
 
 /**
  * Yes, it is yet another logger, because the quality and functionality of the current loggers is extremely poor

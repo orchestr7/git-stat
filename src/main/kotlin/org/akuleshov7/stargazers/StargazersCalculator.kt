@@ -7,7 +7,9 @@ import org.akuleshov7.utils.HttpClientFactory
 import org.akuleshov7.utils.logAndExit
 import org.akuleshov7.utils.logInfo
 
-class StargazersCalculator(private val repositories: Set<String>, private val extended: Boolean, val configPath: String?) {
+class StargazersCalculator(private val repositories: Set<String>,
+                           private val extended: Boolean,
+                           val configPath: String?) {
     var numberOfDuplicatedStars: Int = 0
     lateinit var uniqueStargazers: List<String>
     lateinit var duplicatedStargazers: Map<StargazersJson, Int>
