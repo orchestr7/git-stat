@@ -17,6 +17,7 @@ plugins {
     kotlin("jvm") version "1.4.10"
     kotlin("plugin.serialization") version "1.4.10"
     application
+    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.1.4"
 }
 
 val compileKotlin: KotlinCompile by tasks
@@ -29,7 +30,7 @@ compileTestKotlin.run {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+    implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
@@ -52,18 +53,6 @@ application {
     mainClass.set("org.akuleshov7.stat.StatMainKt")
 }
 
-// code style
-val ktlint by configurations.creating
-task<JavaExec>("diktat") {
-    setGroup("verification")
-    setDescription("Check Kotlin code style.")
-    dependencies {
-        ktlint("com.pinterest:ktlint:0.39.0") {
-            exclude("com.pinterest.ktlint", "ktlint-ruleset-standard")
-        }
-        ktlint("org.cqfn.diktat:diktat-rules:0.1.3")
-    }
-    mainClass.set("com.pinterest.ktlint.Main")
-    classpath = ktlint
-    args("src/**/*.kt")
+diktat {
+    inputs = files("src/**/*.kt")
 }
