@@ -55,4 +55,5 @@ application {
 
 diktat {
     inputs = files("src/**/*.kt")
+    debug = true
 }
