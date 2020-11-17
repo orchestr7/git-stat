@@ -4,7 +4,7 @@ group = "org.akuleshov7"
 version = "0.1.0"
 
 val kotlinVersion = "1.4.10"
-val ktorVersion = "1.4.1"
+val ktorVersion = "1.4.2"
 
 repositories {
     mavenCentral()
