@@ -17,7 +17,7 @@ plugins {
     kotlin("jvm") version "1.4.10"
     kotlin("plugin.serialization") version "1.4.10"
     application
-    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.1.4"
+    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.1.5"
 }
 
 val compileKotlin: KotlinCompile by tasks
@@ -55,5 +55,4 @@ application {
 
 diktat {
     inputs = files("src/**/*.kt")
-    debug = true
 }
