@@ -27,4 +27,4 @@ jobs:
           restore-keys: |
             diktat-cache-gradle-
       - name: Run diktat
-        run: gradle diktat
+        run: ./gradlew diktatCheck

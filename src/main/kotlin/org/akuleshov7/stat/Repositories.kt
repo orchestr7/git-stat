@@ -20,17 +20,16 @@ class Repositories() {
                 .map { it.reposEndPoint() }
                 .toSet()
 
-        val reposFromOrganizations = if (repositoriesList != null) {
-            HttpClientFactory(repositoriesList)
+        val reposFromOrganizations = repositoriesList?.let { repositories ->
+            HttpClientFactory(repositories)
                     .requestAllData<Array<ReposJson>>()
                     .flatMap { array ->
                         mutableListOf<ReposJson>()
                                 .also { it.addAll(array) }
                     }
                     .toSet()
-        } else {
-            emptySet()
         }
+                ?: emptySet()
 
         return reposFromOrganizations.map { it.fullName }.toSet() + repos
     }
