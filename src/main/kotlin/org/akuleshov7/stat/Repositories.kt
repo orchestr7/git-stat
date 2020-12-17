@@ -4,13 +4,13 @@ import org.akuleshov7.api.ReposJson
 import org.akuleshov7.api.reposEndPoint
 import org.akuleshov7.utils.HttpClientFactory
 
-class Repositories() {
+class Repositories(repositories: String?,
+                   organizations: String?,
+                   configPath: String?) {
     var repos: Set<String> = emptySet()
     var orgs: Set<String> = emptySet()
 
-    constructor(repositories: String?,
-                organizations: String?,
-                configPath: String?) : this() {
+    init {
         repos = (readReposFromConfig() ?: repositories).splitAndTrim() ?: emptySet()
         orgs = (readOrgsFromConfig() ?: organizations).splitAndTrim() ?: emptySet()
     }
