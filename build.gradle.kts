@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 group = "org.akuleshov7"
 version = "0.1.0"
 
-val kotlinVersion = "1.4.10"
-val ktorVersion = "1.4.2"
+val kotlinVersion = "1.4.21"
+val ktorVersion = "1.4.3"
 
 repositories {
     mavenCentral()
@@ -14,10 +14,10 @@ repositories {
 
 plugins {
     java
-    kotlin("jvm") version "1.4.10"
-    kotlin("plugin.serialization") version "1.4.10"
+    kotlin("jvm") version "1.4.21"
+    kotlin("plugin.serialization") version "1.4.21"
     application
-    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.1.5"
+    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.1.7"
 }
 
 val compileKotlin: KotlinCompile by tasks
@@ -31,7 +31,7 @@ compileTestKotlin.run {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-core:$ktorVersion")
