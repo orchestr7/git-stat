@@ -4,7 +4,7 @@ group = "org.akuleshov7"
 version = "0.1.0"
 
 val kotlinVersion = "1.4.21"
-val ktorVersion = "1.4.3"
+val ktorVersion = "1.5.0"
 
 repositories {
     mavenCentral()
@@ -17,7 +17,7 @@ plugins {
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.serialization") version "1.4.21"
     application
-    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.1.7"
+    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.2.0"
 }
 
 val compileKotlin: KotlinCompile by tasks

@@ -342,3 +342,23 @@
 - name: CLASS_SHOULD_NOT_BE_ABSTRACT
   enabled: true
   configuration: {}
+- name: TRIVIAL_ACCESSORS_ARE_NOT_RECOMMENDED
+  enabled: true
+- name: CUSTOM_GETTERS_SETTERS
+  enabled: true
+- name: AVOID_NULL_CHECKS
+  enabled: true
+- name: COMPACT_OBJECT_INITIALIZATION
+  enabled: true
+- name: USELESS_SUPERTYPE
+  enabled: true
+- name: EXTENSION_FUNCTION_SAME_SIGNATURE
+  enabled: true
+- name: EMPTY_PRIMARY_CONSTRUCTOR
+  enabled: true
+- name: NO_CORRESPONDING_PROPERTY
+  enabled: true
+- name: AVOID_USING_UTILITY_CLASS
+  enabled: true
+- name: OBJECT_IS_PREFERRED
+  enabled: true
