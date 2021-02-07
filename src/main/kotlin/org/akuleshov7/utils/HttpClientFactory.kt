@@ -4,6 +4,8 @@ package org.akuleshov7.utils
 
 import io.ktor.client.*
 import io.ktor.client.features.*
+import io.ktor.client.features.auth.*
+import io.ktor.client.features.auth.providers.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
@@ -13,13 +15,22 @@ import java.net.SocketException
 import java.net.UnknownHostException
 import kotlinx.coroutines.*
 
-class HttpClientFactory(val urls: Set<String>) {
+class HttpClientFactory(val urls: Set<String>, val config: Config) {
     val client = HttpClient {
         install(JsonFeature) {
             serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
                 isLenient = true
                 ignoreUnknownKeys = true
             })
+        }
+        config.credentials?.let {
+            install(Auth) {
+                basic {
+                    sendWithoutRequest = true
+                    username = it.gitHubUserName
+                    password = it.gitHubAuthToken
+                }
+            }
         }
     }
 
@@ -36,7 +47,13 @@ class HttpClientFactory(val urls: Set<String>) {
                 }
             }
         } catch (e: ClientRequestException) {
-            "Please check the name of your repo. Not able to access $url repository to get statistics <$e>" logAndExit 1
+            when (e.response.status) {
+                HttpStatusCode.Forbidden -> """It looks like you have reached the limit of requests to GitHub. 
+                        | To extend the number of requests use your Username and GitHubToken: '-auth user:token'
+                        | 
+                        | <$e>""".trimMargin() logAndExit 1
+                else -> "Please check the name of your repo. Not able to access $url repository to get statistics <$e>" logAndExit 1
+            }
         } catch (e: TimeoutCancellationException) {
             "Timeout during requesting the github. Is it available for you? Restart the app if possible <$e>" logAndExit 2
         } catch (e: SocketException) {

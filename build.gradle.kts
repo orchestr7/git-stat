@@ -17,7 +17,7 @@ plugins {
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.serialization") version "1.4.21"
     application
-    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.2.0"
+    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.4.0"
 }
 
 val compileKotlin: KotlinCompile by tasks
