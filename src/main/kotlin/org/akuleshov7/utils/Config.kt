@@ -16,7 +16,7 @@ data class Config(
         val isExtended: Boolean,
         val isDebug: Boolean,
         val statType: StatType,
-        val configPath: String?
+        val configPath: String?,
 ) {
     companion object {
         fun create(args: Array<String>): Config {
@@ -82,7 +82,7 @@ data class Config(
                     extended,
                     debug,
                     type,
-                    configPath
+                    configPath,
             )
         }
     }
