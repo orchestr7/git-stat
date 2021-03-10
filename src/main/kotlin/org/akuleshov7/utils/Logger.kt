@@ -8,6 +8,11 @@ import org.akuleshov7.stat.isDebug
 
 import kotlin.system.exitProcess
 
+infix fun String.logAndExit(exitStatus: Int): Nothing {
+    logError(this)
+    exitProcess(exitStatus)
+}
+
 /**
  * Yes, it is yet another logger, because the quality and functionality of the current loggers is extremely poor
  * And to create such logger I have spent ~0 minutes
@@ -24,9 +29,4 @@ fun logDebug(msg: String) {
     if (isDebug) {
         println("[DEBUG] $msg")
     }
-}
-
-infix fun String.logAndExit(exitStatus: Int): Nothing {
-    logError(this)
-    exitProcess(exitStatus)
 }

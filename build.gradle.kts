@@ -13,24 +13,19 @@ repositories {
 }
 
 plugins {
+    id("com.github.ben-manes.versions") version "0.38.0"
     java
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.serialization") version "1.4.21"
     application
-    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.4.0"
+    id("org.cqfn.diktat.diktat-gradle-plugin") version "0.4.2"
 }
 
-val compileKotlin: KotlinCompile by tasks
-val compileTestKotlin: KotlinCompile by tasks
-compileKotlin.run {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin.run {
+tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
@@ -54,5 +49,6 @@ application {
 }
 
 diktat {
+    debug = true
     inputs = files("src/**/*.kt")
 }

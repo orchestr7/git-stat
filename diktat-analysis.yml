@@ -2,6 +2,7 @@
   configuration:
     domainName: org.akuleshov7
     testDirs: test
+    kotlinVersion: 1.4
 - name: CLASS_NAME_INCORRECT
   enabled: true
   configuration: {}
@@ -252,7 +253,7 @@
   enabled: true
   configuration: {}
 # Inspection that checks if there is no blank lines before first comment
-- name: FIRST_COMMENT_NO_SPACES
+- name: FIRST_COMMENT_NO_BLANK_LINE
   enabled: true
   configuration: {}
 # Inspection that checks if there are blank lines between code and comment and between code start token and comment's text
@@ -362,3 +363,8 @@
   enabled: true
 - name: OBJECT_IS_PREFERRED
   enabled: true
+- name: TRAILING_COMMA
+  enabled: true
+  configuration:
+    valueArgument: true
+    valueParameter: true

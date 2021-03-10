@@ -7,10 +7,10 @@ package org.akuleshov7.stat
 import org.akuleshov7.stargazers.StargazersCalculator
 import org.akuleshov7.stat.StatType.STARGAZERS
 import org.akuleshov7.utils.Config
+import org.akuleshov7.utils.logAndExit
 import org.akuleshov7.utils.logInfo
 
 import kotlinx.coroutines.*
-import org.akuleshov7.utils.logAndExit
 
 const val PROGRAM_NAME = "git-stat"
 var isDebug = false
