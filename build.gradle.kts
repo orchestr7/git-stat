@@ -13,12 +13,11 @@ repositories {
 }
 
 plugins {
-    id("com.github.ben-manes.versions") version "0.38.0"
-    java
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.serialization") version "1.4.21"
     application
     id("org.cqfn.diktat.diktat-gradle-plugin") version "0.4.2"
+    id("com.github.ben-manes.versions") version "0.38.0"
 }
 
 tasks.withType<KotlinCompile> {
@@ -27,13 +26,8 @@ tasks.withType<KotlinCompile> {
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
-    implementation("io.ktor:ktor-client-cio:$ktorVersion")
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-apache:$ktorVersion")
-    implementation("io.ktor:ktor-client-auth-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-serialization-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-auth:$ktorVersion")
+    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
     implementation("io.ktor:ktor-client-auth-basic:$ktorVersion")
     implementation("io.github.microutils:kotlin-logging:1.12.0")
 
