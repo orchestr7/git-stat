@@ -11,8 +11,6 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
-import java.net.SocketException
-import java.net.UnknownHostException
 import kotlinx.coroutines.*
 
 class HttpClientFactory(val urls: Set<String>, val config: Config) {
@@ -56,11 +54,11 @@ class HttpClientFactory(val urls: Set<String>, val config: Config) {
             }
         } catch (e: TimeoutCancellationException) {
             "Timeout during requesting the github. Is it available for you? Restart the app if possible <$e>" logAndExit 2
-        } catch (e: SocketException) {
+        }/* catch (e: SocketException) {
             "Are you using proxy? Not able to access $url due to <$e>" logAndExit 3
         } catch (e: UnknownHostException) {
             "Check your internet connection. Not able to access $url due to <$e>" logAndExit 4
-        }
+        }*/
 
     suspend inline fun <reified T> asyncRequestsWithPagination(url: String, numberOfPages: Int): List<T> =
         (1..numberOfPages).map { pageNum ->

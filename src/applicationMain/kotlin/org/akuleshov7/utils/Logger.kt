@@ -13,7 +13,7 @@ import kotlin.system.exitProcess
  * And to create such logger I have spent ~0 minutes
  */
 fun logError(msg: String) {
-    System.err.println("[ERROR] $msg (you can enable debug mode by --debug/-d option)")
+    println("[ERROR] $msg (you can enable debug mode by --debug/-d option)")
 }
 
 fun logInfo(msg: String) {
