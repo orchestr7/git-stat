@@ -47,8 +47,8 @@ class StargazersCalculator(private val repositories: Set<String>, val config: Co
             logInfo("Unique stargazers: ${uniqueStargazers.joinToString()}")
             logInfo(
                     "Duplicated stars: ${
-                    duplicatedStargazers.map { "User:${it.key.login} Stars:${it.value}" }.joinToString("; ")
-                    }"
+                        duplicatedStargazers.map { "User:${it.key.login} Stars:${it.value}" }.joinToString("; ")
+                    }",
             )
         }
     }
